@@ -96,6 +96,27 @@ img { max-width: 100%; display: block; }
 }
 
 /* ============================================================
+   SIDENOTE
+   ============================================================ */
+.sidenote-intro {
+  max-width: 560px;
+  margin: 3rem 1.5rem;
+  font-size: 0.85rem;
+  line-height: 1.85;
+}
+
+.sidenote-intro p {
+  margin-bottom: 2rem;
+  text-align: justify;
+  hyphens: auto;
+}
+
+#countdown {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* ============================================================
    HOME
    ============================================================ */
 .home {
