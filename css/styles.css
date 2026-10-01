@@ -45,39 +45,38 @@ img { max-width: 100%; display: block; }
 
 
 /* ============================================================
-   SITE NAV — barra de navegación persistente
+   BOTTOM NAV — barra fija inferior
    ============================================================ */
-.site-nav {
-  max-width: 1060px;
-  margin: 0 auto;
-  padding: 0.9rem 1.5rem;
+.bottom-nav {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--border);
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
+  background: #1c1b19;
+  border-radius: 3px;
+  overflow: hidden;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+}
+
+.bottom-nav a {
+  padding: 0.6rem 1.3rem;
+  font-size: 0.63rem;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
-}
-
-.site-nav a {
+  color: #6a6762;
   text-decoration: none;
-  color: var(--muted);
-}
-.site-nav a:hover { color: var(--fg); }
-
-.site-nav-logo {
-  font-weight: 500;
-  color: var(--fg) !important;
+  font-family: var(--mono);
+  white-space: nowrap;
+  transition: color 0.1s;
 }
 
-.site-nav-links {
-  display: flex;
-  gap: 2rem;
-}
+.bottom-nav a:hover { color: #c8c5bf; text-decoration: none; }
 
-body.dark-post .site-nav {
-  border-bottom-color: #2a2926;
+.bottom-nav a.active {
+  background: #2e2d2a;
+  color: #e2e0db;
 }
 
 /* === FOOTER === */
