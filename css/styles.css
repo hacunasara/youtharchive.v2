@@ -1,0 +1,521 @@
+/* ============================================================
+   YOUTH ARCHIVE — styles.css
+   Tipografía: IBM Plex Mono
+   Paleta: blanco roto / negro casi puro / tema oscuro para Archive y Salas
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+
+/* === TOKENS === */
+:root {
+  --bg:      #f7f6f3;
+  --fg:      #111010;
+  --muted:   #888580;
+  --border:  #d8d5cf;
+  --mono:    'IBM Plex Mono', 'Courier New', monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0c0c0b; --fg: #e2e0db; --muted: #6a6762; --border: #2a2926;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0c0c0b; --fg: #e2e0db; --muted: #6a6762; --border: #2a2926;
+  color-scheme: dark;
+}
+
+/* === RESET === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* === BASE === */
+body {
+  font-family: var(--mono);
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.65;
+  min-height: 100vh;
+}
+
+a { color: var(--fg); text-decoration: underline; text-underline-offset: 3px; }
+a:hover { text-decoration: none; }
+
+img { max-width: 100%; display: block; }
+
+/* === FOOTER === */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 1.25rem 1.5rem;
+  margin-top: 5rem;
+  font-size: 0.7rem;
+  color: var(--muted);
+  max-width: 1060px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================================
+   HOME
+   ============================================================ */
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: calc(100vh - 80px);
+  padding: 1.5rem 1.5rem;
+}
+
+.home-inner {
+  max-width: 560px;
+  width: 100%;
+}
+
+.home-title {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 400;
+  margin-bottom: 2.5rem;
+}
+
+.home-subtitle {
+  font-size: 0.68rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.home-photo {
+  width: 65%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  margin-bottom: 2rem;
+  background: var(--border);
+}
+
+.home-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.home-link {
+  font-size: 1.55rem;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  display: block;
+  padding: 0.35rem 0;
+  border-top: 1px solid var(--border);
+  color: var(--fg);
+  transition: padding-left 0.15s;
+}
+.home-link:first-child { border-top: none; }
+.home-link:hover { padding-left: 0.5rem; text-decoration: none; }
+
+.sidenote-link {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-decoration: none;
+  margin-top: 1rem;
+}
+.sidenote-link:hover { text-decoration: underline; }
+
+/* ============================================================
+   HEADER (compartido por todas las páginas interiores)
+   ============================================================ */
+.header {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.header h1 {
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.header .subtitle {
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+
+.header a {
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-decoration: none;
+  margin-right: 1.5rem;
+}
+.header a:hover { color: var(--fg); }
+
+.youth-media-link {
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-decoration: none;
+}
+.youth-media-link:hover { color: var(--fg); }
+
+/* ============================================================
+   YOUTH — lista de posts
+   ============================================================ */
+.youth-posts {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--fg);
+}
+.card:first-child { border-top: 1px solid var(--border); margin-top: 1.5rem; }
+
+.card h2 {
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+.card h2 a {
+  text-decoration: none;
+  color: var(--fg);
+}
+.card:hover h2 a { text-decoration: underline; text-underline-offset: 3px; }
+
+.card p {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+.date {
+  font-size: 0.7rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   SINGLE POST
+   ============================================================ */
+.layout {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 155px;
+  gap: 10rem;
+  align-items: start;
+}
+
+.post > a:first-child {
+  font-size: 0.73rem;
+  color: var(--muted);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 2.5rem;
+}
+.post > a:first-child:hover { color: var(--fg); }
+
+.post h1 {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.45;
+  margin-bottom: 0.4rem;
+  text-wrap: balance;
+}
+
+.post .date {
+  display: block;
+  margin-bottom: 2.5rem;
+}
+
+.post p {
+  font-size: 0.85rem;
+  line-height: 1.85;
+  margin-bottom: 1.1rem;
+  text-align: justify;
+  hyphens: auto;
+}
+
+.post em { font-style: italic; }
+
+.sidebar {
+  position: sticky;
+  top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar-img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  background: var(--border);
+}
+
+/* ============================================================
+   GALLERY
+   ============================================================ */
+.gallery-grid {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  counter-reset: gallery;
+}
+
+.gallery-item {
+  background: var(--bg);
+  counter-increment: gallery;
+  overflow: hidden;
+}
+
+.gallery-item a {
+  display: block;
+  text-decoration: none;
+}
+
+.gallery-item img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+
+
+}
+
+.gallery-item figcaption {
+  padding: 0.55rem 0.65rem;
+  font-size: 0.67rem;
+  color: var(--muted);
+  line-height: 1.4;
+  display: flex;
+  gap: 0.4rem;
+  font-family: var(--mono);
+}
+
+.gallery-title::before {
+  content: '[' counter(gallery, decimal-leading-zero) '] ';
+  opacity: 0.45;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   MEDIA
+   ============================================================ */
+.media-content {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.media-item iframe,
+.media-item video {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: none;
+  background: var(--border);
+  display: block;
+}
+
+.media-caption {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 0.6rem;
+}
+
+/* ============================================================
+   DARK THEME — Archive + Salas (body.dark-post)
+   ============================================================ */
+body.dark-post {
+  background: #0c0c0b;
+  color: #e2e0db;
+  --bg: #0c0c0b;
+  --fg: #e2e0db;
+  --muted: #6a6762;
+  --border: #2a2926;
+}
+
+/* Header en dark */
+body.dark-post .header {
+  border-bottom-color: #2a2926;
+}
+
+/* ============================================================
+   ARCHIVE — lista de salas (dark)
+   ============================================================ */
+.archive-posts {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1px;
+  background: #2a2926;
+}
+
+.card-dark {
+  background: #0c0c0b;
+  padding: 1.5rem;
+}
+
+.card-dark h2 {
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+.card-dark h2 a {
+  color: #e2e0db;
+  text-decoration: none;
+}
+.card-dark h2 a:hover { text-decoration: underline; }
+
+.card-dark p {
+  font-size: 0.75rem;
+  color: #6a6762;
+  margin-bottom: 1rem;
+}
+
+.card-cover {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  background: #1a1a19;
+  display: block;
+}
+
+body.dark-post .footer {
+  border-top-color: #2a2926;
+  color: #444;
+}
+
+/* ============================================================
+   SALAS — interior (dark)
+   ============================================================ */
+.sala-title {
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.3rem;
+}
+
+.sala-subtitle {
+  font-size: 0.75rem;
+  color: #6a6762;
+  margin-bottom: 3rem;
+}
+
+/* Layout sala: article amplio + sidebar derecho */
+body.dark-post .layout {
+  grid-template-columns: 1fr 240px;
+  gap: 4rem;
+}
+
+.post-content > a:first-child {
+  font-size: 0.73rem;
+  color: #6a6762;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 2.5rem;
+}
+.post-content > a:first-child:hover { color: #e2e0db; }
+
+body.dark-post .sidebar {
+  border-left: 1px solid #2a2926;
+  padding-left: 1.5rem;
+}
+
+body.dark-post .sidebar h3 {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6a6762;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+body.dark-post .sidebar p {
+  font-size: 0.78rem;
+  color: #a8a5a0;
+  line-height: 1.75;
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* Piezas de museo */
+.pieza-museo {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-top: 1px solid #2a2926;
+}
+
+.pieza-media img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  background: #181816;
+  display: block;
+}
+
+.pieza-texto {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.4rem;
+}
+
+.pieza-caption {
+  font-size: 0.8rem;
+  color: #e2e0db;
+  line-height: 1.5;
+}
+
+.photo-credit {
+  font-size: 0.68rem;
+  color: #6a6762;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .sidebar {
+    flex-direction: row;
+    overflow-x: auto;
+    position: static;
+  }
+  .sidebar-img { width: 130px; flex-shrink: 0; }
+
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .home-link { font-size: 1.2rem; }
+
+  .pieza-museo {
+    grid-template-columns: 1fr;
+  }
+}
