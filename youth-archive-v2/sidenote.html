@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>sidenote</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="favicon.ico">
+</head>
+
+<body>
+
+<header class="header">
+  <a href="/index.html">← Volver</a>
+</header>
+
+<div class="sidenote-intro">
+
+  <p>
+    Ésta web sólo será pública durante un tiempo, ya que no podré tener mi vida expuesta en internet indefinidamente. Espero que hasta entonces lo disfrutéis de algún modo, que añadáis alguna canción a vuestra playlist, os sintáis un poco identificados con lo que escribo, os sirva algún vídeo o libro que haya subido a media, o podáis disfrutar un poco de lo que me gusta, si es que encuentro el tiempo para llenar el archivo. Gracias por leerme y os quiero mucho. 
+  </p>
+
+  <div id="countdown">
+    <span class="countdown-label">Quedan:</span>
+    <span class="countdown-days"></span>
+  </div>
+
+</div>
+
+<script>
+const targetDate = new Date("October 22, 2027 00:00:00").getTime();
+
+function updateCountdown() {
+  const now = new Date().getTime();
+  const distance = targetDate - now;
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+  document.querySelector(".countdown-days").innerHTML =
+    `${days} días`;
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
