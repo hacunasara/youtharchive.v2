@@ -603,10 +603,18 @@ body.dark-post .sidebar p {
   }
   .sidebar {
     flex-direction: row;
+    flex-wrap: wrap;
     overflow-x: auto;
     position: static;
+    gap: 0.5rem;
   }
-  .sidebar-img { width: 130px; flex-shrink: 0; }
+  .sidebar-img {
+    width: calc(50% - 0.25rem);
+    max-width: 200px;
+    flex-shrink: 0;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+  }
 
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
 
