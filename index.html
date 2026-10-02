@@ -33,7 +33,7 @@
         <span class="notif-chevron">▾</span>
       </summary>
 
-      <a href="/salas/sala-2.html" class="notif-item unread" onclick="notifRead(this)">
+      <a href="/salas/sala-2.html" class="notif-item unread" data-nid="n1" onclick="notifRead(this)">
         <span class="notif-dot"></span>
         <div class="notif-body">
           <span class="notif-tipo">sala nueva</span>
@@ -42,7 +42,7 @@
         <span class="notif-tiempo">reciente</span>
       </a>
 
-      <a href="/media.html" class="notif-item unread" onclick="notifRead(this)">
+      <a href="/media.html" class="notif-item unread" data-nid="n2" onclick="notifRead(this)">
         <span class="notif-dot"></span>
         <div class="notif-body">
           <span class="notif-tipo">media</span>
@@ -51,7 +51,7 @@
         <span class="notif-tiempo">reciente</span>
       </a>
 
-      <a href="/media.html" class="notif-item unread" onclick="notifRead(this)">
+      <a href="/media.html" class="notif-item unread" data-nid="n3" onclick="notifRead(this)">
         <span class="notif-dot"></span>
         <div class="notif-body">
           <span class="notif-tipo">media</span>
@@ -60,7 +60,7 @@
         <span class="notif-tiempo">reciente</span>
       </a>
 
-      <a href="/galeria.html" class="notif-item unread" onclick="notifRead(this)">
+      <a href="/galeria.html" class="notif-item unread" data-nid="n4" onclick="notifRead(this)">
         <span class="notif-dot"></span>
         <div class="notif-body">
           <span class="notif-tipo">galería</span>
@@ -69,7 +69,7 @@
         <span class="notif-tiempo">reciente</span>
       </a>
 
-      <a href="/galeria.html" class="notif-item unread" onclick="notifRead(this)">
+      <a href="/galeria.html" class="notif-item unread" data-nid="n5" onclick="notifRead(this)">
         <span class="notif-dot"></span>
         <div class="notif-body">
           <span class="notif-tipo">galería</span>
@@ -80,13 +80,35 @@
     </details>
 
     <script>
+      (function() {
+        try {
+          var read = JSON.parse(localStorage.getItem('youth_notif_read') || '[]');
+          read.forEach(function(id) {
+            var el = document.querySelector('[data-nid="' + id + '"]');
+            if (el) el.classList.remove('unread');
+          });
+          var unread = document.querySelectorAll('#notif-panel .notif-item.unread').length;
+          var badge = document.getElementById('notif-badge');
+          if (badge) {
+            if (unread === 0) badge.hidden = true;
+            else badge.textContent = unread;
+          }
+        } catch(e) {}
+      })();
+
       function notifRead(el) {
         el.classList.remove('unread');
+        try {
+          var read = JSON.parse(localStorage.getItem('youth_notif_read') || '[]');
+          var id = el.getAttribute('data-nid');
+          if (id && read.indexOf(id) === -1) read.push(id);
+          localStorage.setItem('youth_notif_read', JSON.stringify(read));
+        } catch(e) {}
         var unread = document.querySelectorAll('#notif-panel .notif-item.unread').length;
         var badge = document.getElementById('notif-badge');
         if (badge) {
-          if (unread === 0) { badge.hidden = true; }
-          else { badge.textContent = unread; }
+          if (unread === 0) badge.hidden = true;
+          else badge.textContent = unread;
         }
       }
     </script>
