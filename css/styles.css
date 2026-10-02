@@ -301,6 +301,10 @@ img { max-width: 100%; display: block; }
   align-items: start;
 }
 
+.post {
+  min-width: 0;
+}
+
 .post > a:first-child {
   font-size: 0.73rem;
   color: var(--muted);
@@ -339,13 +343,13 @@ img { max-width: 100%; display: block; }
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  min-width: 0;
 }
 
 .sidebar-img {
   width: 100%;
-  aspect-ratio: 3/4;
-  object-fit: cover;
-  background: var(--border);
+  height: auto;
+  display: block;
 }
 
 .sidebar h3 {
@@ -596,7 +600,7 @@ body.dark-post .sidebar p {
 /* ============================================================
    RESPONSIVE
    ============================================================ */
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .layout {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -612,8 +616,7 @@ body.dark-post .sidebar p {
     width: calc(50% - 0.25rem);
     max-width: 200px;
     flex-shrink: 0;
-    aspect-ratio: 3/4;
-    object-fit: cover;
+    height: auto;
   }
 
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
