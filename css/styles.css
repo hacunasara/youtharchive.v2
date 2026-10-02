@@ -715,6 +715,13 @@ body.dark-post .sidebar p {
 .notif-ver-todo:hover { color: var(--fg); }
 
 /* ============================================================
+   SALA DESC MOBILE — descripción inline en móvil, oculta en desktop
+   ============================================================ */
+.sala-desc-mobile {
+  display: none;
+}
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width: 768px) {
@@ -726,6 +733,23 @@ body.dark-post .sidebar p {
     flex-direction: column;
     position: static;
     gap: 0.75rem;
+  }
+
+  /* Salas en móvil: ocultar sidebar, mostrar desc inline */
+  body.dark-post .sidebar {
+    display: none;
+  }
+  .sala-desc-mobile {
+    display: block;
+    font-size: 0.78rem;
+    color: #a8a5a0;
+    line-height: 1.75;
+    margin-bottom: 0.5rem;
+    margin-top: 0.75rem;
+  }
+  body.dark-post .layout {
+    grid-template-columns: 1fr;
+    gap: 0;
   }
   .sidebar-img {
     width: 100%;
