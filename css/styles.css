@@ -411,10 +411,10 @@ img { max-width: 100%; display: block; }
   font-family: var(--mono);
 }
 
-.gallery-title::before {
-  content: '[' counter(gallery, decimal-leading-zero) '] ';
+.gallery-num {
   opacity: 0.45;
   flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
 }
 
 /* ============================================================
@@ -596,6 +596,117 @@ body.dark-post .sidebar p {
   font-size: 0.68rem;
   color: #6a6762;
 }
+
+
+/* ============================================================
+   NOVEDADES — panel de notificaciones (index.html)
+   ============================================================ */
+.notif-panel {
+  border: 1px solid var(--border);
+  margin-top: 2.5rem;
+  width: 100%;
+}
+
+.notif-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.9rem;
+  border-bottom: 1px solid var(--border);
+}
+.notif-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+.notif-panel-title {
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--fg);
+}
+.notif-badge {
+  font-size: 0.52rem;
+  background: var(--fg);
+  color: var(--bg);
+  padding: 0.1em 0.45em;
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+}
+.notif-mark-read {
+  font-size: 0.52rem;
+  color: var(--muted);
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: var(--mono);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 0;
+}
+.notif-mark-read:hover { color: var(--fg); }
+
+.notif-item {
+  display: grid;
+  grid-template-columns: 0.45rem 1fr auto;
+  gap: 0 0.8rem;
+  align-items: start;
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--fg);
+  background: var(--bg);
+}
+.notif-item:last-of-type { border-bottom: none; }
+.notif-item:hover { background: var(--border); }
+.notif-item.unread { background: color-mix(in srgb, var(--border) 40%, var(--bg)); }
+.notif-item.unread:hover { background: var(--border); }
+
+.notif-dot {
+  width: 0.38rem;
+  height: 0.38rem;
+  border-radius: 50%;
+  background: var(--fg);
+  margin-top: 0.32rem;
+  opacity: 0;
+  flex-shrink: 0;
+}
+.unread .notif-dot { opacity: 1; }
+
+.notif-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+.notif-tipo {
+  font-size: 0.52rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.notif-texto {
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+.notif-tiempo {
+  font-size: 0.55rem;
+  color: var(--muted);
+  white-space: nowrap;
+  padding-top: 0.2rem;
+}
+.notif-footer {
+  padding: 0.55rem 0.9rem;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.notif-ver-todo {
+  font-size: 0.58rem;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+}
+.notif-ver-todo:hover { color: var(--fg); }
 
 /* ============================================================
    RESPONSIVE
