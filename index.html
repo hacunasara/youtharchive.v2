@@ -24,16 +24,16 @@
       <a href="/sidenote.html" class="sidenote-link">*sidenote</a>
     </div>
 
-    <div class="notif-panel" id="notif-panel">
-      <div class="notif-header">
+    <details class="notif-panel" id="notif-panel">
+      <summary class="notif-header">
         <div class="notif-header-left">
           <span class="notif-panel-title">novedades</span>
           <span class="notif-badge" id="notif-badge">5</span>
         </div>
-        <button class="notif-mark-read" onclick="notifMarkRead()">marcar como leído</button>
-      </div>
+        <span class="notif-chevron">▾</span>
+      </summary>
 
-      <a href="/salas/sala-2.html" class="notif-item unread">
+      <a href="/salas/sala-2.html" class="notif-item unread" onclick="notifRead(this)">
         <span class="notif-dot"></span>
         <div class="notif-body">
           <span class="notif-tipo">sala nueva</span>
@@ -42,7 +42,7 @@
         <span class="notif-tiempo">reciente</span>
       </a>
 
-      <a href="/media.html" class="notif-item unread">
+      <a href="/media.html" class="notif-item unread" onclick="notifRead(this)">
         <span class="notif-dot"></span>
         <div class="notif-body">
           <span class="notif-tipo">media</span>
@@ -51,7 +51,7 @@
         <span class="notif-tiempo">reciente</span>
       </a>
 
-      <a href="/media.html" class="notif-item unread">
+      <a href="/media.html" class="notif-item unread" onclick="notifRead(this)">
         <span class="notif-dot"></span>
         <div class="notif-body">
           <span class="notif-tipo">media</span>
@@ -60,7 +60,7 @@
         <span class="notif-tiempo">reciente</span>
       </a>
 
-      <a href="/galeria.html" class="notif-item unread">
+      <a href="/galeria.html" class="notif-item unread" onclick="notifRead(this)">
         <span class="notif-dot"></span>
         <div class="notif-body">
           <span class="notif-tipo">galería</span>
@@ -69,7 +69,7 @@
         <span class="notif-tiempo">reciente</span>
       </a>
 
-      <a href="/galeria.html" class="notif-item unread">
+      <a href="/galeria.html" class="notif-item unread" onclick="notifRead(this)">
         <span class="notif-dot"></span>
         <div class="notif-body">
           <span class="notif-tipo">galería</span>
@@ -77,69 +77,19 @@
         </div>
         <span class="notif-tiempo">reciente</span>
       </a>
-
-      <div class="notif-footer">
-        <a href="/archive.html" class="notif-ver-todo">ver todo el archivo →</a>
-      </div>
-    </div>
+    </details>
 
     <script>
-      function notifMarkRead() {
-        document.querySelectorAll('#notif-panel .notif-item.unread').forEach(el => el.classList.remove('unread'));
+      function notifRead(el) {
+        el.classList.remove('unread');
+        var unread = document.querySelectorAll('#notif-panel .notif-item.unread').length;
         var badge = document.getElementById('notif-badge');
-        if (badge) badge.hidden = true;
+        if (badge) {
+          if (unread === 0) { badge.hidden = true; }
+          else { badge.textContent = unread; }
+        }
       }
     </script>
-
-    <div class="notif-panel" id="notif-panel">
-      <div class="notif-header">
-        <div class="notif-header-left">
-          <span class="notif-panel-title">novedades</span>
-          <span class="notif-badge" id="notif-badge">3</span>
-        </div>
-        <button class="notif-mark-read" onclick="notifMarkRead()">marcar como leído</button>
-      </div>
-
-      <a href="/salas/sala-2.html" class="notif-item unread">
-        <span class="notif-dot"></span>
-        <div class="notif-body">
-          <span class="notif-tipo">sala nueva</span>
-          <span class="notif-texto">Sala 2 — Sculptural low tables from the 60s, 70s and 80s</span>
-        </div>
-        <span class="notif-tiempo">reciente</span>
-      </a>
-
-      <a href="/media.html" class="notif-item unread">
-        <span class="notif-dot"></span>
-        <div class="notif-body">
-          <span class="notif-tipo">media</span>
-          <span class="notif-texto">Ajahn Brahm — cómo silenciar la mente</span>
-        </div>
-        <span class="notif-tiempo">reciente</span>
-      </a>
-
-      <a href="/media.html" class="notif-item unread">
-        <span class="notif-dot"></span>
-        <div class="notif-body">
-          <span class="notif-tipo">media</span>
-          <span class="notif-texto">Jacobo Grinberg — la conciencia y el "yo"</span>
-        </div>
-        <span class="notif-tiempo">reciente</span>
-      </a>
-
-      <div class="notif-footer">
-        <a href="/archive.html" class="notif-ver-todo">ver todo el archivo →</a>
-      </div>
-    </div>
-
-    <script>
-      function notifMarkRead() {
-        document.querySelectorAll('.notif-item.unread').forEach(el => el.classList.remove('unread'));
-        var badge = document.getElementById('notif-badge');
-        if (badge) badge.hidden = true;
-      }
-    </script>
-
 
   </div>
 </main>
