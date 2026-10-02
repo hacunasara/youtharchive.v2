@@ -741,11 +741,21 @@ body.dark-post .sidebar p {
   }
   .sala-desc-mobile {
     display: block;
+    margin-bottom: 0.5rem;
+    margin-top: 0.75rem;
+  }
+  .sala-desc-mobile h3 {
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6a6762;
+    font-weight: 400;
+    margin-bottom: 0.6rem;
+  }
+  .sala-desc-mobile p {
     font-size: 0.78rem;
     color: #a8a5a0;
     line-height: 1.75;
-    margin-bottom: 0.5rem;
-    margin-top: 0.75rem;
   }
   body.dark-post .layout {
     grid-template-columns: 1fr;
