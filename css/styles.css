@@ -27,7 +27,6 @@ body {
   color: var(--fg);
   line-height: 1.65;
   min-height: 100vh;
-  padding-bottom: 100px; /* espacio para la barra de navegación fija */
 }
 
 a { color: var(--fg); text-decoration: underline; text-underline-offset: 3px; }
@@ -729,6 +728,9 @@ body.dark-post .sidebar p {
   .layout {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+  body:not([class]) {
+    padding-bottom: 100px;
   }
   .sidebar {
     flex-direction: column;
