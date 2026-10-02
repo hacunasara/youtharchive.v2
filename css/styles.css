@@ -15,16 +15,7 @@
   --mono:    'IBM Plex Mono', 'Courier New', monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0c0c0b; --fg: #e2e0db; --muted: #6a6762; --border: #2a2926;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #0c0c0b; --fg: #e2e0db; --muted: #6a6762; --border: #2a2926;
-  color-scheme: dark;
-}
+
 
 /* === RESET === */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
