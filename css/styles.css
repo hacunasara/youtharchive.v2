@@ -477,6 +477,12 @@ body.dark-post .header {
 .card-dark {
   background: #0c0c0b;
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-dark .card-cover {
+  margin-top: auto;
 }
 
 .card-dark h2 {
