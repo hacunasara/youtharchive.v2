@@ -33,7 +33,7 @@
         <span class="notif-chevron">▾</span>
       </summary>
 
-      <a href="/posts/post-40.html" class="notif-item unread" data-nid="n6" onclick="notifRead(this)">
+      <a href="/posts/post-40.html" class="notif-item unread" data-nid="n6" data-date="2026-10-04" onclick="notifRead(this)">
         <span class="notif-dot"></span>
         <div class="notif-body">
           <span class="notif-tipo">post nuevo</span>
@@ -42,7 +42,7 @@
         <span class="notif-tiempo">4 oct 2026</span>
       </a>
 
-      <a href="/posts/post-39.html" class="notif-item unread" data-nid="n7" onclick="notifRead(this)">
+      <a href="/posts/post-39.html" class="notif-item unread" data-nid="n7" data-date="2026-10-04" onclick="notifRead(this)">
         <span class="notif-dot"></span>
         <div class="notif-body">
           <span class="notif-tipo">post nuevo</span>
@@ -51,7 +51,7 @@
         <span class="notif-tiempo">4 oct 2026</span>
       </a>
 
-      <a href="/salas/sala-2.html" class="notif-item unread" data-nid="n1" onclick="notifRead(this)">
+      <a href="/salas/sala-2.html" class="notif-item unread" data-nid="n1" data-date="2026-10-02" onclick="notifRead(this)">
         <span class="notif-dot"></span>
         <div class="notif-body">
           <span class="notif-tipo">sala nueva</span>
@@ -60,7 +60,7 @@
         <span class="notif-tiempo">reciente</span>
       </a>
 
-      <a href="/media.html" class="notif-item unread" data-nid="n2" onclick="notifRead(this)">
+      <a href="/media.html" class="notif-item unread" data-nid="n2" data-date="2026-10-02" onclick="notifRead(this)">
         <span class="notif-dot"></span>
         <div class="notif-body">
           <span class="notif-tipo">media</span>
@@ -69,7 +69,7 @@
         <span class="notif-tiempo">reciente</span>
       </a>
 
-      <a href="/media.html" class="notif-item unread" data-nid="n3" onclick="notifRead(this)">
+      <a href="/media.html" class="notif-item unread" data-nid="n3" data-date="2026-10-02" onclick="notifRead(this)">
         <span class="notif-dot"></span>
         <div class="notif-body">
           <span class="notif-tipo">media</span>
@@ -78,7 +78,7 @@
         <span class="notif-tiempo">reciente</span>
       </a>
 
-      <a href="/galeria.html" class="notif-item unread" data-nid="n4" onclick="notifRead(this)">
+      <a href="/galeria.html" class="notif-item unread" data-nid="n4" data-date="2026-10-02" onclick="notifRead(this)">
         <span class="notif-dot"></span>
         <div class="notif-body">
           <span class="notif-tipo">galería</span>
@@ -87,7 +87,7 @@
         <span class="notif-tiempo">reciente</span>
       </a>
 
-      <a href="/galeria.html" class="notif-item unread" data-nid="n5" onclick="notifRead(this)">
+      <a href="/galeria.html" class="notif-item unread" data-nid="n5" data-date="2026-10-02" onclick="notifRead(this)">
         <span class="notif-dot"></span>
         <div class="notif-body">
           <span class="notif-tipo">galería</span>
@@ -100,12 +100,24 @@
     <script>
       (function() {
         try {
+          // Ocultar items con más de 7 días
+          var now = new Date();
+          document.querySelectorAll('#notif-panel .notif-item[data-date]').forEach(function(el) {
+            var d = new Date(el.getAttribute('data-date'));
+            if ((now - d) > 7 * 24 * 60 * 60 * 1000) {
+              el.hidden = true;
+            }
+          });
+
+          // Restaurar estado de leídos
           var read = JSON.parse(localStorage.getItem('youth_notif_read') || '[]');
           read.forEach(function(id) {
             var el = document.querySelector('[data-nid="' + id + '"]');
             if (el) el.classList.remove('unread');
           });
-          var unread = document.querySelectorAll('#notif-panel .notif-item.unread').length;
+
+          // Actualizar badge
+          var unread = document.querySelectorAll('#notif-panel .notif-item:not([hidden]).unread').length;
           var badge = document.getElementById('notif-badge');
           if (badge) {
             if (unread === 0) badge.hidden = true;
@@ -122,7 +134,7 @@
           if (id && read.indexOf(id) === -1) read.push(id);
           localStorage.setItem('youth_notif_read', JSON.stringify(read));
         } catch(e) {}
-        var unread = document.querySelectorAll('#notif-panel .notif-item.unread').length;
+        var unread = document.querySelectorAll('#notif-panel .notif-item:not([hidden]).unread').length;
         var badge = document.getElementById('notif-badge');
         if (badge) {
           if (unread === 0) badge.hidden = true;
