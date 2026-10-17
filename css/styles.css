@@ -100,7 +100,7 @@ img { max-width: 100%; display: block; }
 .sidenote-intro p {
   margin-bottom: 3rem;
   text-align: justify;
-  hyphens: auto;
+
 }
 
 #countdown {
@@ -332,7 +332,7 @@ img { max-width: 100%; display: block; }
   line-height: 1.85;
   margin-bottom: 1.1rem;
   text-align: justify;
-  hyphens: auto;
+
 }
 
 .post em { font-style: italic; }
@@ -565,7 +565,7 @@ body.dark-post .sidebar p {
   color: #a8a5a0;
   line-height: 1.75;
   text-align: justify;
-  hyphens: auto;
+
 }
 
 /* Piezas de museo */
@@ -769,7 +769,7 @@ body:not([class]) {
     color: #a8a5a0;
     line-height: 1.75;
     text-align: justify;
-    hyphens: auto;
+  
   }
   body.dark-post .layout {
     grid-template-columns: 1fr;
