@@ -337,6 +337,14 @@ img { max-width: 100%; display: block; }
 
 .post em { font-style: italic; }
 
+.post-img {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  display: block;
+  margin: 1.5rem auto;
+}
+
 .sidebar {
   position: sticky;
   top: 2rem;
