@@ -219,6 +219,45 @@
       </div>
     </a>
 </main>
+<script>
+/* Mosaico: reparte las tarjetas, en orden, en la columna más corta de cada mes */
+(function () {
+  var list = document.querySelector('.youth-list');
+  if (!list) return;
+  var groups = [], cur = null;
+  Array.prototype.forEach.call(list.children, function (el) {
+    if (el.classList.contains('yc-month')) { cur = { head: el, cards: [] }; groups.push(cur); }
+    else if (cur) cur.cards.push(el);
+  });
+  var lastN = 0;
+  function cols() { var w = window.innerWidth; return w <= 480 ? 1 : (w <= 860 ? 2 : 3); }
+  function layout() {
+    var n = cols();
+    if (n === lastN) return;
+    lastN = n;
+    list.classList.add('is-masonry');
+    groups.forEach(function (g) {
+      if (g.box) g.box.remove();
+      var box = document.createElement('div');
+      box.className = 'yc-cols';
+      var columns = [];
+      for (var i = 0; i < n; i++) { var c = document.createElement('div'); c.className = 'yc-col'; box.appendChild(c); columns.push(c); }
+      g.head.after(box);
+      g.box = box;
+      g.cards.forEach(function (card) {
+        var best = columns[0];
+        columns.forEach(function (c) { if (c.offsetHeight < best.offsetHeight) best = c; });
+        best.appendChild(card);
+      });
+    });
+  }
+  layout();
+  var t;
+  window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(layout, 150); });
+  window.addEventListener('load', function () { lastN = 0; layout(); });
+})();
+</script>
+
 
 <footer class="footer">
   <p>© 2026 — YOUTH ARCHIVE by Sara Hernández</p>
